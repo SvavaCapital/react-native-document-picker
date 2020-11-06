@@ -182,6 +182,11 @@ RCT_EXPORT_METHOD(pick:(NSDictionary *)options
     if (controller.documentPickerMode == UIDocumentPickerModeImport) {
         RCTPromiseResolveBlock resolve = [composeResolvers lastObject];
         RCTPromiseRejectBlock reject = [composeRejecters lastObject];
+
+        if (resolve == nil) {
+            return;
+        }
+
         [composeResolvers removeLastObject];
         [composeRejecters removeLastObject];
         
